@@ -10,7 +10,7 @@ const UserSchema = new mongoose.Schema({
   addressLine2: { type: String },
   city: { type: String },
   state: { type: String },
-  zipCode: { type: Number },
+  zipCode: { type: String },
   tenantId: { type: String, required: true },
 
 
