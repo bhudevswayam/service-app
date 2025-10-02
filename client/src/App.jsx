@@ -9,6 +9,7 @@ import  Login  from "./components/Login";
 import { Register } from "./components/Register";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useAuth } from "./context/AuthContext";  
+import { UserProfile } from "./components/UserProfile";
 
 export default function App() {
   const { user, loading, logoutUser } = useAuth();
@@ -31,6 +32,9 @@ export default function App() {
         } />
         <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
         <Route path="/register" element={user ? <Navigate to="/" /> : <Register />} />
+
+         {/* Protected pages */}
+        <Route path="/profile" element={user ? <UserProfile user={user}/> : <Navigate to="/login" />} />
 
         {/* Catch-all redirect */}
         <Route path="*" element={<Navigate to="/" />} />
