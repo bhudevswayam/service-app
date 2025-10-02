@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const BASE_URL = "http://localhost:4000/api";
-const tenantId = localStorage.getItem("tenantId") || "2";
+const tenantId = localStorage.getItem("tenantId");
 const token = localStorage.getItem("token");
 const getTokenHeader = () => ({
   headers: {
@@ -10,7 +10,7 @@ const getTokenHeader = () => ({
   },
 });
 
-export const fetchUserProfile = async () => {
+export const fetchUserProfile = async () => {  
   const res = await axios.get(`${BASE_URL}/users/profile`, getTokenHeader());
   return res.data;
 };

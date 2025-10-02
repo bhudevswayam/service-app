@@ -13,8 +13,7 @@ const UserSchema = new mongoose.Schema({
   zipCode: { type: Number },
   tenantId: { type: String, required: true },
 
-  // Optional: quick access to bookings (can also just query Booking collection)
-  bookings: [{ type: mongoose.Schema.Types.ObjectId, ref: "Booking" }]
+
 }, { timestamps: true });
 
 module.exports = mongoose.model("User", UserSchema);

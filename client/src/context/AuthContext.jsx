@@ -40,15 +40,17 @@ export const AuthProvider = ({ children }) => {
   }, []);
   
   const loginUser = (data) => {
+    console.log("Logging in user:", data);
+    
     localStorage.setItem("token", data.token);
-    localStorage.setItem("x-tenant-id", data.tenantId || "");
+    localStorage.setItem("tenantId", data.tenantId || "");
     setUser(data);
   };
 
   const logoutUser = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
-    localStorage.removeItem("x-tenant-id");
+    localStorage.removeItem("tenantId");
     setUser(null);
   };
 

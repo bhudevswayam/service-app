@@ -9,7 +9,7 @@ const getUsers = asyncHandler(async (req, res) => {
 
 // @desc    Get logged in user's profile
 const getProfile = asyncHandler(async (req, res) => {
-  const user = await User.findById(req.user._id).select("-password").populate("bookings");
+  const user = await User.findById(req.user._id).select("-password")
   if (!user) {
     res.status(404);
     throw new Error("User not found");
@@ -54,7 +54,6 @@ const updateProfile = asyncHandler(async (req, res) => {
     state: updatedUser.state,
     zipCode: updatedUser.zipCode,
     role: updatedUser.role,
-    bookings: updatedUser.bookings,
   });
 });
 
