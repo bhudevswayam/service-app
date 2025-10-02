@@ -10,6 +10,12 @@ export const register = async (data) => {
   return res.data;
 };
 
+export const registerBusiness = async (data) => {
+  const res = await axios.post(`${BASE_URL}/auth/register-business`, data, {
+  });
+  return res.data;
+}
+
 export const login = async (data) => {    
   const res = await axios.post(`${BASE_URL}/auth/login`, data, {
   });
