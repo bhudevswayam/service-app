@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const asyncHandler = require('express-async-handler');
 const User = require('../models/User');
+const Business = require('../models/Business');
 
 // Protect routes
 const protect = asyncHandler(async (req, res, next) => {
@@ -19,6 +20,11 @@ const protect = asyncHandler(async (req, res, next) => {
 
     // Try finding in User
     let user = await User.findById(decoded.id);
+
+    // If not found, try Business
+    if (!user) {
+      user = await Business.findById(decoded.id);
+    }
 
     
     if (!user) {

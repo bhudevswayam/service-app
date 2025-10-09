@@ -51,8 +51,7 @@ const getBusinesses = asyncHandler(async (req, res) => {
 // @route   GET /business/:id
 // @access  Tenant admin
 const getBusinessById = asyncHandler(async (req, res) => {
-  const tenantId = req.tenantId;
-  const business = await Business.findOne({ _id: req.params.id, tenantId })
+  const business = await Business.findOne({ _id: req.params.id })
     // .populate("services")
     // .populate("clients", "name email");
 

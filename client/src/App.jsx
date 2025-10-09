@@ -11,6 +11,8 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { useAuth } from "./context/AuthContext";  
 import { UserProfile } from "./components/UserProfile";
 import { RegisterBusiness } from "./components/RegisterBusiness";
+import { BookingHistory } from "./components/BookingHistory";
+import { BusinessProfile } from "./components/BusinessProfile";
 
 export default function App() {
   const { user, loading, logoutUser } = useAuth();
@@ -37,6 +39,8 @@ export default function App() {
         
          {/* Protected pages */}
         <Route path="/profile" element={user ? <UserProfile user={user}/> : <Navigate to="/login" />} />
+        <Route path="/bookings" element={user ? <BookingHistory /> : <Navigate to="/login" />} />
+        <Route path="/business" element={user?.role == "business" ? <BusinessProfile /> : <Navigate to="/" />} />
 
         {/* Catch-all redirect */}
         <Route path="*" element={<Navigate to="/" />} />
